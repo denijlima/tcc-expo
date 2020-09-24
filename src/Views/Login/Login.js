@@ -17,10 +17,14 @@ const [usuario, setUsuario] = useState("");
 const [senha, setSenha] = useState("");
   
 
-   const tentarLogar = ()=>{
-    console.log("Logando",usuario, senha);
-    let logado = logando(usuario,senha);
-    console.log(logado);
+   const tentarLogar = async () =>{
+    let logado = await logando(usuario, senha);
+
+    if(logado == '200')
+      navigation.navigate('Cadastro')
+
+    if(logado == '403')
+      Alert.alert('Credenciais incorretas!')
 
   }
   
