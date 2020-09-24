@@ -12,11 +12,10 @@ const efetuarLogin =  async (usuario, senha) =>{
             "Content-type" : "application/json"
         }
     }
-    let status
-    const resposta = await fetch(`https://${url}/auth`, cabecalhoHTTP).then((response) => { status = response.status });
+    const resposta = await fetch(`https://${url}/auth`, cabecalhoHTTP);
+    let status = await resposta.status
     console.log(status)
-    return status
-
+    return await status
     }
 
 

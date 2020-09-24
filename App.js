@@ -1,4 +1,3 @@
-// import 'react-native-gesture-handler';
 import React, {Fragment,useState,useEffect} from 'react';
 import Login from "./src/Views/Login/Login";
 import Cadastro from "./src/Views/Cadastro/Cadastro";
