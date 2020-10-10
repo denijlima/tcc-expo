@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import { View, Text, TextInput, Button } from 'react-native'
-import estilo_cadastro from "./estilo_cadastro";
+import estilo_produto from "./estilo_produto";
 
 // const Cadastro = () => {
 //     const [datanasc, setDatanasc] = useState("");
@@ -11,48 +11,41 @@ import estilo_cadastro from "./estilo_cadastro";
 //     const [senha, setSenha] = useState("");
 
   
-const Cadastro = () => {
+const Produto = () => {
   
       return (
         <Fragment>
-          
             <TextInput 
-            style={estilo_cadastro.titulo}
-            >Cadastro Usuário
+            style={estilo_produto.titulo}
+            >Conheça o melhor preço do mercado
+            </TextInput>      
+            <TextInput 
+            style={estilo_produto.subtitulo}
+            >Cadastre seu produto
             </TextInput>
           <TextInput 
-            style={estilo_cadastro.inputs}
+            style={estilo_produto.inputs}
             placeholder="Nome"
             onChangeText={texto => setNome(texto)}
           />
           <TextInput 
-            style={estilo_cadastro.inputs}
-            placeholder="Sobrenome"
+            style={estilo_produto.inputs}
+            placeholder="Valor"
             onChangeText={texto => setSobrenome(texto)}
           />
           <TextInput 
-            style={estilo_cadastro.inputs}
-            placeholder="CPF"
+            style={estilo_produto.inputs}
+            placeholder="Data validade"
             onChangeText={texto => setCpf(INT)}
           />
           <TextInput 
-            style={estilo_cadastro.inputs}
-            placeholder="email"
+            style={estilo_produto.inputs}
+            placeholder="Descrição"
             onChangeText={texto => setEmail(texto)}
           />
-           <TextInput 
-            style={estilo_cadastro.inputs}
-            placeholder="Senha"
-            secureTextEntry={true}
-            onChangeText={texto => setSenha(texto)}
-          />
-          <TextInput 
-            style={estilo_cadastro.inputs}
-            placeholder="Data nascimento"
-            onChangeText={texto => setDtnasc(texto)}
-          />
+
           <Button
-            title="Cadastre-se">
+            title="Inserir produto">
           </Button>
           
     
@@ -61,5 +54,5 @@ const Cadastro = () => {
     
 };
 
-export default Cadastro;
+export default Produto;
 

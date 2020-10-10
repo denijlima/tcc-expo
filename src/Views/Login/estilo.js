@@ -5,7 +5,8 @@ const estilo = StyleSheet.create({
     conteiner:{
         flexGrow:2,
         justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        backgroundColor: '#fff'
     },
     inputs:{
         width:largura*0.8,

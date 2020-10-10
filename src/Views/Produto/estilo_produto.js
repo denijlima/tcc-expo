@@ -1,7 +1,7 @@
 import {StyleSheet, Dimensions} from "react-native"
 
 const largura = Dimensions.get("screen").width;
-const estilo_cadastro = StyleSheet.create({
+const estilo_produto = StyleSheet.create({
     conteiner:{
         flexGrow:2,
         justifyContent:"center",
@@ -19,6 +19,7 @@ const estilo_cadastro = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'green',
         backgroundColor: '#fff',
+        justifyContent:"center",
         alignItems:"center",
         marginLeft:60
     },
@@ -32,12 +33,21 @@ const estilo_cadastro = StyleSheet.create({
 
     titulo: {
         fontWeight: "bold",
-        fontSize:25,
+        fontSize:18,
         marginBottom:50,
         textAlign:'center',
         marginTop:100,
     },
 
+    subtitulo: {
+        fontWeight: "bold",
+        fontSize:17,
+        marginBottom:50,
+        textAlign:'center',
+        color: "blue"
+        // marginTop:100,
+    },
+
 
 });     
-export default estilo_cadastro;
+export default estilo_produto;

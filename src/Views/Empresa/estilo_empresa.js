@@ -1,7 +1,7 @@
 import {StyleSheet, Dimensions} from "react-native"
 
 const largura = Dimensions.get("screen").width;
-const estilo_cadastro = StyleSheet.create({
+const estilo_empresa = StyleSheet.create({
     conteiner:{
         flexGrow:2,
         justifyContent:"center",
@@ -19,6 +19,7 @@ const estilo_cadastro = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'green',
         backgroundColor: '#fff',
+        justifyContent:"center",
         alignItems:"center",
         marginLeft:60
     },
@@ -40,4 +41,4 @@ const estilo_cadastro = StyleSheet.create({
 
 
 });     
-export default estilo_cadastro;
+export default estilo_empresa;
