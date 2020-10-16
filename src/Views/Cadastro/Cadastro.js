@@ -1,14 +1,27 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import { View, Text, TextInput, Button } from 'react-native'
 import estilo_cadastro from "./estilo_cadastro";
+import cadastrado from "../../api/cadastro"
 
-// const Cadastro = () => {
-//     const [datanasc, setDatanasc] = useState("");
-//     const [email, setEmail] = useState("");
-//     const [nome, setNome] = useState("");
-//     const [sobrenome, setSobrenome] = useState("");
-//     const [usuario, setUsuario] = useState("");
-//     const [senha, setSenha] = useState("");
+const Cadastro = ({navigation}) => {
+    const [datanasc, setDatanasc] = useState("");
+    const [email, setEmail] = useState("");
+    const [nome, setNome] = useState("");
+    const [sobrenome, setSobrenome] = useState("");
+    const [usuario, setUsuario] = useState("");
+    const [senha, setSenha] = useState("");
+  
+
+   const cadastrar = async () =>{
+    let cadastrar = await cadastrado (datanasc, email, nome, sobrenome, usuario, senha);
+
+    if(cadastrar == '200')
+      navigation.navigate('Cadastro')
+
+    if(cadastrar == '403')
+      Alert.alert('Dados incorretos!')
+
+  }
 
   
 const Cadastro = () => {
@@ -51,11 +64,15 @@ const Cadastro = () => {
             placeholder="Data nascimento"
             onChangeText={texto => setDtnasc(texto)}
           />
+        <Button 
+         style={estilo.botao} 
+         title="Entrar" 
+         onPress={cadastrar} 
+         />
           <Button
             title="Cadastre-se">
           </Button>
           
-    
         </Fragment>
       )
     
