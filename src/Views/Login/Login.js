@@ -17,11 +17,21 @@ const [usuario, setUsuario] = useState("");
 const [senha, setSenha] = useState("");
 const [opcao, setOpcao] = useState('cadastro');
 
+   const navegacao = () => {
+    if(opcao === 'empresa')
+      navigation.navigate('Empresa')
+
+    if (opcao === 'cadastro')
+      navigation.navigate('Cadastro')
+   }
+
+   console.log(opcao)
+
    const tentarLogar = async () =>{
     let logado = await logando(usuario, senha);
 
     if(logado == '200')
-      navigation.navigate('Cadastro')
+      navigation.navigate('Produto')
 
     if(logado == '403')
       Alert.alert('Credenciais incorretas!')
@@ -53,12 +63,12 @@ const [opcao, setOpcao] = useState('cadastro');
          <Button 
          style={estilo.botao} 
          title="Entrar" 
-         onPress={tentarLogar} 
+         onPress={() => tentarLogar()} 
          />
         <Text style={estilo.texto} >Ainda não tem uma conta?</Text>
         <Button 
           title="Cadastre-se"
-          onPress={() => Alert.alert('Simple Button pressed')}
+          onPress={() => navegacao() }
         />
         <Text>cadastro</Text>
         <RadioButton

@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import { View, Text, TextInput, Button } from 'react-native'
+import { View, Text, TextInput, Button, Alert } from 'react-native'
 import estilo_cadastro from "./estilo_cadastro";
 import cadastrado from "../../api/cadastro"
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -9,13 +9,35 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 const Cadastro = ({navigation}) => {
 
   const cadastrar = async () => {
-    let status_cadastro = await cadastrado(datanasc, email, nome, sobrenome, usuario, senha);
+    // let status_cadastro = await cadastrado(datanasc, email, nome, sobrenome, usuario, senha);
 
-    if (status_cadastro == '200')
-      navigation.navigate('Cadastro')
+    // if (status_cadastro == '200')
+    //   navigation.navigate('Cadastro')
 
-    if (status_cadastro == '403')
-      Alert.alert('Dados incorretos!')
+    // if (status_cadastro == '403')
+    //   Alert.alert('Dados incorretos!')
+
+    if(!email)
+      return Alert.alert('Preencha o campo email!')
+
+    if (!nome)
+      return Alert.alert('Preencha o campo nome!')
+
+    if (!sobrenome)
+     return Alert.alert('Preencha o campo sobrenome!')
+
+    if (!usuario)
+     return Alert.alert('Preencha o campo usuario!')
+
+    if (!senha)
+     return Alert.alert('Preencha o campo senha!')
+
+    if (!cpf)
+     return Alert.alert('Preencha o campo sobrenome!')
+
+    Alert.alert('Cadastrado com sucesso')
+
+    navigation.navigate('Produto')
   }
 
   const onChange = (event, selectedDate) => {
@@ -93,7 +115,7 @@ const Cadastro = ({navigation}) => {
       <Button 
          style={estilo_cadastro.botao} 
          title="Entrar" 
-            onPress={() => cadastrado(datanasc, email, nome, sobrenome, usuario, senha)} 
+            onPress={() => cadastrar()} 
          />
       </Fragment>
       )
