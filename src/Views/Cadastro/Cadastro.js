@@ -2,37 +2,42 @@ import React, {Fragment, useState} from 'react';
 import { View, Text, TextInput, Button } from 'react-native'
 import estilo_cadastro from "./estilo_cadastro";
 import cadastrado from "../../api/cadastro"
+import DateTimePicker from '@react-native-community/datetimepicker';
+
+
 
 const Cadastro = ({navigation}) => {
-    const [datanasc, setDatanasc] = useState("");
-    const [email, setEmail] = useState("");
-    const [nome, setNome] = useState("");
-    const [sobrenome, setSobrenome] = useState("");
-    const [usuario, setUsuario] = useState("");
-    const [senha, setSenha] = useState("");
-  
 
-   const cadastrar = async () =>{
-    let cadastrar = await cadastrado (datanasc, email, nome, sobrenome, usuario, senha);
+  const cadastrar = async () => {
+    let status_cadastro = await cadastrado(datanasc, email, nome, sobrenome, usuario, senha);
 
-    if(cadastrar == '200')
+    if (status_cadastro == '200')
       navigation.navigate('Cadastro')
 
-    if(cadastrar == '403')
+    if (status_cadastro == '403')
       Alert.alert('Dados incorretos!')
-
   }
 
-  
-const Cadastro = () => {
+  const onChange = (event, selectedDate) => {
+    setDatanasc(selectedDate);
+  };
+
+  const [datanasc, setDatanasc] = useState(new Date());
+  const [email, setEmail] = useState(false);
+  const [nome, setNome] = useState(false);
+  const [sobrenome, setSobrenome] = useState(false);
+  const [usuario, setUsuario] = useState(false);
+  const [senha, setSenha] = useState(false);
+  const [cpf, setCpf] = useState(false);
+  const [show, setShow] = useState(false);
   
       return (
         <Fragment>
           
-            <TextInput 
+          <TextInput 
             style={estilo_cadastro.titulo}
             >Cadastro Usuário
-            </TextInput>
+          </TextInput>
           <TextInput 
             style={estilo_cadastro.inputs}
             placeholder="Nome"
@@ -46,7 +51,8 @@ const Cadastro = () => {
           <TextInput 
             style={estilo_cadastro.inputs}
             placeholder="CPF"
-            onChangeText={texto => setCpf(INT)}
+            onChangeText={texto => setCpf(texto)}
+            keyboardType='numeric'
           />
           <TextInput 
             style={estilo_cadastro.inputs}
@@ -59,24 +65,39 @@ const Cadastro = () => {
             secureTextEntry={true}
             onChangeText={texto => setSenha(texto)}
           />
-          <TextInput 
+
+          <TextInput
             style={estilo_cadastro.inputs}
-            placeholder="Data nascimento"
-            onChangeText={texto => setDtnasc(texto)}
+            placeholder="Usuario"
+            onChangeText={texto => setUsuario(texto)}
           />
-        <Button 
-         style={estilo.botao} 
-         title="Entrar" 
-         onPress={cadastrar} 
-         />
+
           <Button
-            title="Cadastre-se">
-          </Button>
-          
-        </Fragment>
+            style={estilo_cadastro.botao}
+            title="DataNascimento"
+            onPress={() => setShow(!show)}
+          />
+
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={datanasc}
+            mode='date'
+            is24Hour={true}
+            display="default"
+            onChange={onChange}
+          />
+        )
+
+        }
+      <Button 
+         style={estilo_cadastro.botao} 
+         title="Entrar" 
+            onPress={() => cadastrado(datanasc, email, nome, sobrenome, usuario, senha)} 
+         />
+      </Fragment>
       )
     
 };
 
 export default Cadastro;
-

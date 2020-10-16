@@ -8,14 +8,14 @@ import {
   Alert
 } from "react-native";
 import estilo from "./estilo";
-// import {} from 'react-native-paper';
+import { RadioButton } from 'react-native-paper';
 import logando from "../../api/login";
 
 
 const Login = ({navigation}) => {
 const [usuario, setUsuario] = useState("");
 const [senha, setSenha] = useState("");
-  
+const [opcao, setOpcao] = useState('cadastro');
 
    const tentarLogar = async () =>{
     let logado = await logando(usuario, senha);
@@ -60,6 +60,19 @@ const [senha, setSenha] = useState("");
           title="Cadastre-se"
           onPress={() => Alert.alert('Simple Button pressed')}
         />
+        <Text>cadastro</Text>
+        <RadioButton
+          value="cadastro"
+          status={opcao === 'cadastro' ? 'checked' : 'unchecked'}
+          onPress={() => setOpcao('cadastro')}
+        />
+        <Text>empresa</Text>
+        <RadioButton
+          value="empresa"
+          status={opcao === 'empresa' ? 'checked' : 'unchecked'}
+          onPress={() => setOpcao('empresa')}
+        />
+
       </View>
     </Fragment>
     

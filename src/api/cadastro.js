@@ -1,5 +1,5 @@
 
-const cadastrarCliente =  async (datanasc, email,nome,sobrenome,usuario,senha) =>{
+const cadastrarCliente =  async (datanasc, email, nome, sobrenome, usuario, senha) =>{
     let url = "iwallet-e.herokuapp.com";
 
     const cabecalhoHTTP = {
@@ -22,5 +22,4 @@ const cadastrarCliente =  async (datanasc, email,nome,sobrenome,usuario,senha) =
     return await status
     }
 
-
-export default inserirCadastro
+export default cadastrarCliente
