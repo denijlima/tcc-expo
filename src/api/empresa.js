@@ -14,8 +14,7 @@ const cadastrarEmpresa =  async (nome, cnpj, email, senha, telefone, fimContrato
         }),
         headers:{ 
             "Content-type" : "application/json",
-    "token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgQmFuayIsInN1YiI6IjEiLCJpYXQiOjE2MDQ1MzAyMjksImV4cCI6MTYwNDYxNjYyOX0.143O1iw-2LP-Dtjz-4DNyR5UKojcizy6zv-kFiPaHkY",
-    "type": "Bearer"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgQmFuayIsInN1YiI6IjEiLCJpYXQiOjE2MDQ1MzAyMjksImV4cCI6MTYwNDYxNjYyOX0.143O1iw-2LP-Dtjz-4DNyR5UKojcizy6zv-kFiPaHkY",
         
     }
 }
