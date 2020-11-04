@@ -9,13 +9,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 const Cadastro = ({navigation}) => {
 
   const cadastrar = async () => {
-    // let status_cadastro = await cadastrado(datanasc, email, nome, sobrenome, usuario, senha);
 
-    // if (status_cadastro == '200')
-    //   navigation.navigate('Cadastro')
-
-    // if (status_cadastro == '403')
-    //   Alert.alert('Dados incorretos!')
 
     if(!email)
       return Alert.alert('Preencha o campo email!')
@@ -35,10 +29,17 @@ const Cadastro = ({navigation}) => {
     if (!cpf)
      return Alert.alert('Preencha o campo sobrenome!')
 
-    Alert.alert('Cadastrado com sucesso')
+    let status_cadastro = await cadastrado(datanasc, email, nome, sobrenome, usuario, senha);
+
+     if (status_cadastro == '200')
+       navigation.navigate('Cadastro')
+
+      if (status_cadastro == '403')
+       Alert.alert('Dados incorretos!')
 
     navigation.navigate('Produto')
   }
+
 
   const onChange = (event, selectedDate) => {
     setDatanasc(selectedDate);
