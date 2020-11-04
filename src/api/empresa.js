@@ -1,3 +1,4 @@
+import token from './token'
 
 const cadastrarEmpresa =  async (nome, cnpj, email, senha, telefone, fimContrato, descricao) =>{
     let url = "iwallet-e.herokuapp.com";
@@ -14,9 +15,8 @@ const cadastrarEmpresa =  async (nome, cnpj, email, senha, telefone, fimContrato
         }),
         headers:{ 
             "Content-type" : "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgQmFuayIsInN1YiI6IjEiLCJpYXQiOjE2MDQ1MzAyMjksImV4cCI6MTYwNDYxNjYyOX0.143O1iw-2LP-Dtjz-4DNyR5UKojcizy6zv-kFiPaHkY",
-        
-    }
+            "Authorization": `Bearer ${token}`,
+        }
 }
 
     const resposta = await fetch(`https://${url}/api/Company/SaveCompany`, cabecalhoHTTP);
