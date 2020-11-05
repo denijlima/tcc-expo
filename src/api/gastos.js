@@ -1,4 +1,4 @@
-import token from './token'
+import token from '../api/token'
 
 const API_URL = 'iwallet-e.herokuapp.com';
 
