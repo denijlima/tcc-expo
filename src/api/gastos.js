@@ -2,14 +2,14 @@ import token from '../api/token'
 
 const API_URL = 'iwallet-e.herokuapp.com';
 
-export const salvarGasto = async (empresa, tipo, categoria, custo, recorrencia, descricao) => {
+export const salvarGasto = async (product, description, cash, recurrent) => {
     const cabecalhoHTTP = {
         method: "POST",
         body: JSON.stringify({
-            cash: custo,
-            description: descricao,
-            id_product: 1,
-            recurrent: false
+            cash: cash,
+            description: description,
+            id_product: product,
+            recurrent: recurrent
         }),
         headers: {
             "Content-type": "application/json",
@@ -18,7 +18,7 @@ export const salvarGasto = async (empresa, tipo, categoria, custo, recorrencia, 
     }
 
     const response = await fetch(`https://${API_URL}/api/Spent/SaveSpent`, cabecalhoHTTP);
-    return await response.json()
+    return response.status
 }
 
 export const listarGastos = async () => {
