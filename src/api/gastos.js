@@ -17,7 +17,7 @@ export const salvarGasto = async (empresa, tipo, categoria, custo, recorrencia, 
         }
     }
 
-    const response = await fetch(`https://${API_URL}/api/Spend/SaveSpend`, cabecalhoHTTP);
+    const response = await fetch(`https://${API_URL}/api/Spent/SaveSpent`, cabecalhoHTTP);
     return await response.json()
 }
 
@@ -30,7 +30,6 @@ export const listarGastos = async () => {
         }
     }
 
-    const response = await fetch(`https://${API_URL}/api/Spend/GetSpend`, cabecalhoHTTP);
-    console.log(await response.json())
-    return response.status !== 200 ? await response.json() : [];
+    const response = await fetch(`https://${API_URL}/api/Spent/GetSpent`, cabecalhoHTTP);
+    return await response.json();
 }

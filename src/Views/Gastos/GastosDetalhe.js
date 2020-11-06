@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, Picker } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 
 import salvarGasto from '../../api/gastos';
@@ -7,54 +7,32 @@ import salvarGasto from '../../api/gastos';
 import estilo_gastos from './estilo_gastos';
 
 const GastosDetalhe = ({ route, navigation }) => {
-  const [empresa, setEmpresa] = useState(route.params.empresa);
+  const [product, setProduct] = useState(route.params.product.id);
   const [tipo, setTipo] = useState(route.params.tipo);
   const [categoria, setCategoria] = useState(route.params.categoria);
   const [custo, setCusto] = useState(route.params.custo);
   const [recorrencia, setRecorrencia] = useState(route.params.recorrencia);
+
+  const [selectedValue, setSelectedValue] = useState(null);
 
   return (
     <View style={estilo_gastos.detalheForm}>
       <TextInput
         style={estilo_gastos.detalheFormInput}
         mode="outlined"
-        label="Empresa"
-        value={empresa}
-        onChangeText={value => setEmpresa(value)}
+        label="Produto"
+        value={product}
+        onChangeText={value => setProduct(value)}
       >
       </TextInput>
-      <TextInput
-        style={estilo_gastos.detalheFormInput}
-        mode="outlined"
-        label="Tipo"
-        value={tipo}
-        onChangeText={value => setTipo(value)}
+      <Picker
+        mode="dropdown"
+        selectedValue={selectedValue}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
-      </TextInput>
-      <TextInput
-        style={estilo_gastos.detalheFormInput}
-        mode="outlined"
-        label="Categoria"
-        value={categoria}
-        onChangeText={value => setCategoria(value)}
-      >
-      </TextInput>
-      <TextInput
-        style={estilo_gastos.detalheFormInput}
-        mode="outlined"
-        label="Custo"
-        value={custo}
-        onChangeText={value => setCusto(value)}
-      >
-      </TextInput>
-      <TextInput
-        style={estilo_gastos.detalheFormInput}
-        mode="outlined"
-        label="Recorrência"
-        value={recorrencia}
-        onChangeText={value => setRecorrencia(value)}
-      >
-      </TextInput>
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
       <Button style={estilo_gastos.detalheSubmitButton} mode="contained"
       // onPress={() => salvarGasto()}
       >
