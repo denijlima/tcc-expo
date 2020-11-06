@@ -1,1 +1,1 @@
-export default token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgQmFuayIsInN1YiI6IjEiLCJpYXQiOjE2MDQ1MzAyMjksImV4cCI6MTYwNDYxNjYyOX0.143O1iw-2LP-Dtjz-4DNyR5UKojcizy6zv-kFiPaHkY"
+export default token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgQmFuayIsInN1YiI6IjkiLCJpYXQiOjE2MDQ2MTkyMDEsImV4cCI6MTYwNDcwNTYwMX0.IzlTKASOYcbfNLXT701u96jsyji02ePXo6e3qj-zLM8"

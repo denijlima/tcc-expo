@@ -54,7 +54,7 @@ const GastosStack = () => {
         options={({ route }) => {
           const routeName = route.state
             ? route.state.routes[route.state.index].name
-            : 'Gastos';
+            : 'IWallet';
           return { headerTitle: routeName };
         }}
       />

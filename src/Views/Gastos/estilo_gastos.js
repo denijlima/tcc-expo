@@ -25,7 +25,7 @@ const estilo_gastos = StyleSheet.create({
     bottom: 0,
   },
   detalheForm: {
-    padding:20
+    padding: 20
   },
   detalheFormInput: {
     marginTop: 10,
@@ -34,6 +34,13 @@ const estilo_gastos = StyleSheet.create({
   detalheSubmitButton: {
     marginHorizontal: 20,
     marginTop: 30
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
   }
 });
 
