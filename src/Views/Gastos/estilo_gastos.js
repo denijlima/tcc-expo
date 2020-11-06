@@ -41,6 +41,12 @@ const estilo_gastos = StyleSheet.create({
     right: 0,
     bottom: 0,
     top: 0
+  },
+  detalheLabelValue: {
+    marginTop: 10,
+    marginHorizontal: 20,
+    display: "flex",
+    flexDirection: "row"
   }
 });
 

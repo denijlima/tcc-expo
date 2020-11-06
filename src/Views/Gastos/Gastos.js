@@ -48,7 +48,7 @@ const Gastos = ({navigation}) => {
       <FAB
         style={estilo_gastos.fab}
         icon="plus"
-        onPress={() => navigation.push('GastosDetalhe', {})}
+        onPress={() => navigation.push('GastosDetalhe', {product: { id: 0 } })}
       />
     </Fragment>
   )
