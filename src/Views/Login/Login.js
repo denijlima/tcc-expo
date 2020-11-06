@@ -31,7 +31,7 @@ const [opcao, setOpcao] = useState('cadastro');
     let logado = await logando(usuario, senha);
 
     if(logado == '200')
-      navigation.navigate('Produto')
+      navigation.navigate('GastosStack')
 
     if(logado == '403')
       Alert.alert('Credenciais incorretas!')

@@ -4576,6 +4576,11 @@ react-dom@~16.11.0:
     prop-types "^15.6.2"
     scheduler "^0.17.0"
 
+react-hook-form@^6.10.1:
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.10.1.tgz#71ff7eb07ec2588af3007a09adcdfa65d3451b33"
+  integrity sha512-tPfNu2q8HUUKL4gOsJzzoBX8+3y2brJk+61TO+RO9GtpLnWPptLrAIupMtyPeENMpLmLfBKHhT9nfezHLTW2mA==
+
 react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -4612,10 +4617,10 @@ react-native-iphone-x-helper@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
 
-react-native-paper@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.2.0.tgz#534c0f9dbeecfd73d20f1f7b1ef3df32aa2ca4b0"
-  integrity sha512-+pM8olBygXP5cdUcPRC++BPb5DvdYPN2LJFIt2eXbT0GXs7kU7nG+hFRnsxu8awt6em6gcHVVw3ajvQGEl+CIg==
+react-native-paper@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.3.0.tgz#07e3e2fa60bbbf898179f10dc74b985a22682152"
+  integrity sha512-mT8nw8ultKak42CrjRLezGLKIrgzFMp/qvNk3jIVsZ/chrxefcEKaSaxePWthcrvL/kaqhk6HSZtW7Ug+QLmhg==
   dependencies:
     "@callstack/react-theme-provider" "^3.0.5"
     color "^3.1.2"
@@ -4700,6 +4705,11 @@ react-native-web@~0.11.7:
     stacktrace-parser "^0.1.3"
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
+
+react-navigation-material-bottom-tabs@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/react-navigation-material-bottom-tabs/-/react-navigation-material-bottom-tabs-2.3.3.tgz#9c9efa4b7c3d813bc31808efcf95e888f92f5341"
+  integrity sha512-/r7f4zNpauc7wMI7ES5IKXRAe7rJ0dv9NG5bsjrsoleIxSpVnoBh0ZOBscDvtp35bxNfKO/EQpRvld0rrk8k3Q==
 
 react-refresh@^0.4.0:
   version "0.4.3"
