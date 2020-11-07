@@ -1,53 +1,53 @@
-import {StyleSheet, Dimensions} from "react-native"
+import { StyleSheet } from 'react-native';
 
-const largura = Dimensions.get("screen").width;
 const estilo_produto = StyleSheet.create({
-    conteiner:{
-        flexGrow:2,
-        justifyContent:"center",
-        alignItems:"center"
-    },
-    inputs:{
-        width:largura*0.8,
-        textAlign: "center",
-        marginTop:10,
-        marginBottom:10,
-        fontSize:20,
-        fontWeight: "bold",
-        width: '65%',
-        height: 40,
-        borderWidth: 1,
-        borderColor: 'green',
-        backgroundColor: '#fff',
-        justifyContent:"center",
-        alignItems:"center",
-        marginLeft:60
-    },
+  surface: {
+    marginTop: 10,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    elevation: 2
+  },
+  lastSurface: {
+    marginTop: 10,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    elevation: 2,
+    marginBottom: 10
+  },
+  icon: {
+    height: 60,
+    width: 60
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
+  detalheForm: {
+    padding: 20
+  },
+  detalheFormInput: {
+    marginTop: 10,
+    marginHorizontal: 20
+  },
+  detalheSubmitButton: {
+    marginHorizontal: 20,
+    marginTop: 30
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
+  },
+  detalheLabelValue: {
+    marginTop: 10,
+    marginHorizontal: 20,
+    display: "flex",
+    flexDirection: "row"
+  }
+});
 
-    texto: {
-        fontWeight: "bold",
-        fontSize:25,
-        marginBottom:50
-    },
-
-
-    titulo: {
-        fontWeight: "bold",
-        fontSize:18,
-        marginBottom:50,
-        textAlign:'center',
-        marginTop:100,
-    },
-
-    subtitulo: {
-        fontWeight: "bold",
-        fontSize:17,
-        marginBottom:50,
-        textAlign:'center',
-        color: "blue"
-        // marginTop:100,
-    },
-
-
-});     
-export default estilo_produto;
+export default estilo_produto

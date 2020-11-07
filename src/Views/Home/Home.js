@@ -12,7 +12,7 @@ const Home = ({navigation}) => {
     { key: 'gastos', title: 'Gastos', icon: 'cash-multiple' }
   ]);
 
-  const ProdutoRoute = () => <Produto />;
+  const ProdutoRoute = () => <Produto navigation={navigation}/>;
   
   const GastosRoute = () => <Gastos navigation={navigation} />;
 

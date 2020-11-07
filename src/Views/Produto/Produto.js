@@ -1,58 +1,120 @@
-import React, {Fragment} from 'react';
-import { View, Text, TextInput, Button } from 'react-native'
-import estilo_produto from "./estilo_produto";
+import React, { useState, useEffect, Fragment } from 'react';
+import { View, Picker } from 'react-native';
+import { TextInput, Button, Checkbox, Text } from 'react-native-paper';
 
-// const Cadastro = () => {
-//     const [datanasc, setDatanasc] = useState("");
-//     const [email, setEmail] = useState("");
-//     const [nome, setNome] = useState("");
-//     const [sobrenome, setSobrenome] = useState("");
-//     const [usuario, setUsuario] = useState("");
-//     const [senha, setSenha] = useState("");
+import { salvarGasto } from '../../api/produto';
+import { listarProdutos } from '../../api/produto';
+import { listarClassificacao } from '../../api/produto';
+import { listarEmpresa } from '../../api/produto';
 
+import estilo_produto from './estilo_produto';
+
+const Produto = ({navigation }) => {
+  const [product, setProduct] = useState("");
+  const [description, setDescription] = useState("");
+  const [cash, setCash] = useState("");
+  const [recurrent, setRecurrent] = useState("");
+
+  const [data, setdata] = useState([])
+  const [empresa, setEmpresa] = useState([])
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await listarClassificacao();
+      const empresa = await listarEmpresa();
+      setdata(response)
+      setEmpresa(empresa)
+    }
+    if (data.length == 0)
+      fetchData()
+  }, [])
+
+  return (
+    <View style={estilo_produto.detalheForm}>
+      <View>
+        <Text>
+          Classificação
+        </Text>
+        <Picker
+          style={estilo_produto.detalheForm}
+          mode="dialog"
+          selectedValue={product}
+          onValueChange={(itemValue, itemIndex) => setProduct(itemValue)}
+        >
+          {data && data.length > 0 ?
+            data.map((val, index) =>
+              <Picker.Item key={val.id} label={val.name} value={val.id} />
+            )
+            :
+            <Picker.Item label="Carregando" value="0" />
+          }
+        </Picker>
+        
+        <Text>
+          Empresa
+        </Text>
+        <Picker
+          style={estilo_produto.detalheForm}
+          mode="dropdown"
+          selectedValue={product}
+          onValueChange={(itemValue, itemIndex) => setProduct(itemValue)}
+        >
+          {empresa && empresa.length > 0 ?
+            empresa.map((val, index) =>
+              <Picker.Item key={val.id} label={val.name} value={val.id} />
+            )
+            :
+            <Picker.Item label="Carregando" value="0" />
+          }
+        </Picker>
+      </View>
+
+      <TextInput
+        style={estilo_produto.detalheFormInput}
+        multiline
+        mode="outlined"
+        label="Nome"
+        value={description}
+        onChangeText={value => setDescription(value)}
+      />
+      <TextInput
+        style={estilo_produto.detalheFormInput}
+        mode="outlined"
+        label="Valor"
+        type="number"
+        value={cash && cash + ""}
+        onChangeText={value => setCash(parseInt(value))}
+      />
   
-const Produto = () => {
-  
-      return (
-        <Fragment>
-            <TextInput 
-            style={estilo_produto.titulo}
-            >Conheça o melhor preço do mercado
-            </TextInput>      
-            <TextInput 
-            style={estilo_produto.subtitulo}
-            >Cadastre seu produto
-            </TextInput>
-          <TextInput 
-            style={estilo_produto.inputs}
-            placeholder="Nome"
-            onChangeText={texto => setNome(texto)}
-          />
-          <TextInput 
-            style={estilo_produto.inputs}
-            placeholder="Valor"
-            onChangeText={texto => setSobrenome(texto)}
-          />
-          <TextInput 
-            style={estilo_produto.inputs}
-            placeholder="Data validade"
-            onChangeText={texto => setCpf(INT)}
-          />
-          <TextInput 
-            style={estilo_produto.inputs}
-            placeholder="Descrição"
-            onChangeText={texto => setEmail(texto)}
-          />
-
-          <Button
-            title="Inserir produto">
-          </Button>
-          
-    
-        </Fragment>
-      )
-    
-};
+      <TextInput
+        style={estilo_produto.detalheFormInput}
+        multiline
+        mode="outlined"
+        label="Descrição"
+        value={description}
+        onChangeText={value => setDescription(value)}
+      />
+      <View style={estilo_produto.detalheLabelValue}>
+      <Text>
+        Recorrente
+      </Text>
+      <Checkbox
+      status={recurrent ? 'checked' : 'unchecked'}
+      onPress={() => {
+        setRecurrent(!recurrent);
+      }}
+    /></ View>
+      <Button style={estilo_produto.detalheSubmitButton} mode="contained"
+      onPress={async () => {
+        const status = await salvarGasto(product, description, cash, recurrent)
+        status == '200' ? navigation.goBack : {}
+      }}
+      >
+        Salvar
+      </Button>
+    </View>
+  )
+}
 
 export default Produto;
-
