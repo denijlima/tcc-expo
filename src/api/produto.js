@@ -41,16 +41,16 @@ export const listarEmpresa = async () => {
     return await response.json();
 }
 
-const cadastrarProduto =  async (empresa, tipo, categoria, custo, nome) =>{
+export const cadastrarProduto =  async (description, id_classification, id_company, name, price) =>{
     let url = "iwallet-e.herokuapp.com";
     const cabecalhoHTTP = {
         method:"POST",
         body:JSON.stringify({
-          description: string,
-          id_classification: 0,
-          id_company: 0,
-          name: nome,
-          price: 0
+          description: description,
+          id_classification: id_classification,
+          id_company: id_company,
+          name: name,
+          price: price
         }),
         headers:{ 
             "Content-type" : "application/json",
@@ -63,5 +63,3 @@ const cadastrarProduto =  async (empresa, tipo, categoria, custo, nome) =>{
     console.log(status)
     return await status
     }
-
-export default cadastrarProduto

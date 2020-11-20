@@ -3,21 +3,25 @@ import { FlatList } from 'react-native'
 import { List, Surface, FAB, ActivityIndicator } from 'react-native-paper';
 
 import { listarGastos } from '../../api/gastos';
+import { buscarSugestao } from '../../api/sugestao';
 
 import estilo_gastos from "./estilo_gastos";
 
-const SPEND_MOCKUP = []
-
-const Gastos = ({navigation}) => {
+const Gastos = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setdata] = useState([])
+  const [data, setdata] = useState([]);
+  const [sugestoes, setSugestoes] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
 
       const response = await listarGastos();
-      setdata(response.length > 0 ? response : SPEND_MOCKUP)
+      setdata(response.length > 0 ? response : [])
+
+      if (data.length > 0)
+        // para cada produto buscar uma sugestão e setar uma flag no produto ou criar um map de produto -> sugestão
+        data.map((gasto) => setSugestoes([...sugestoes, { id: gasto.product.id, ...buscarSugestao('test', gasto.product.cash, 'test') }]))
 
       setIsLoading(false);
     }
@@ -25,6 +29,7 @@ const Gastos = ({navigation}) => {
       fetchData()
   }, [])
 
+  // TODO refatorar layout
   return (
     <Fragment>
       {!isLoading ?
@@ -43,12 +48,12 @@ const Gastos = ({navigation}) => {
           }
         />
         :
-        <ActivityIndicator animating={true} size="large" style={estilo_gastos.loading}/>
+        <ActivityIndicator animating={true} size="large" style={estilo_gastos.loading} />
       }
       <FAB
         style={estilo_gastos.fab}
         icon="plus"
-        onPress={() => navigation.push('GastosDetalhe', {product: { id: 0 } })}
+        onPress={() => navigation.push('GastosDetalhe', { product: { id: 0 } })}
       />
     </Fragment>
   )
