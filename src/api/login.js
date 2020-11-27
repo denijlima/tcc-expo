@@ -1,5 +1,3 @@
-import token from './token'
-
 const efetuarLogin =  async (usuario, senha) =>{
     let url = "iwallet-e.herokuapp.com";
 
