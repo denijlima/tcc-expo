@@ -21,7 +21,6 @@ const cadastrarEmpresa =  async (nome, cnpj, email, senha, telefone, fimContrato
 
     const resposta = await fetch(`https://${url}/api/Company/SaveCompany`, cabecalhoHTTP);
     let status = await resposta.status
-    console.log(status)
     return await status
     }
 

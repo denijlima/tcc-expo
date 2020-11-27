@@ -18,7 +18,6 @@ const cadastrarCliente =  async (datanasc, email, nome, sobrenome, usuario, senh
     }
     const resposta = await fetch(`https://${url}/api/Customer/SaveCustomer`, cabecalhoHTTP);
     let status = await resposta.status
-    console.log(status)
     return await status
     }
 

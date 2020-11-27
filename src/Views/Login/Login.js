@@ -25,7 +25,6 @@ const [opcao, setOpcao] = useState('cadastro');
       navigation.navigate('Cadastro')
    }
 
-   console.log(opcao)
 
    const tentarLogar = async () =>{
     let logado = await logando(usuario, senha);

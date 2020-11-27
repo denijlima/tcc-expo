@@ -1,6 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { FlatList } from 'react-native'
+import React, { Fragment, useEffect, useState, fetchData } from 'react';
+import { FlatList, Modal, Text, View, TouchableHighlight } from 'react-native'
 import { List, Surface, FAB, ActivityIndicator } from 'react-native-paper';
+import sugestionList from '../../utils/sugestion'
 
 import { listarGastos } from '../../api/gastos';
 import { buscarSugestao } from '../../api/sugestao';
@@ -13,15 +14,32 @@ const Gastos = ({ navigation }) => {
   const [sugestoes, setSugestoes] = useState([])
 
   useEffect(() => {
+    data.map((gasto) => { 
+      const fetchData = async () => {
+        
+        let sugestao = await buscarSugestao(sugestionList[gasto.product.classification], gasto.cash, gasto.product.name, gasto.id)
+
+        sugestao["id"] = gasto.id
+        setSugestoes(...sugestoes, sugestao)
+      }
+      fetchData()
+    })
+
+  }, [data])
+
+  useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
 
       const response = await listarGastos();
-      setdata(response.length > 0 ? response : [])
 
-      if (data.length > 0)
+      if (response.length > 0)
+        setdata(response)
+
+
+      // console.log(data)
+     
         // para cada produto buscar uma sugestão e setar uma flag no produto ou criar um map de produto -> sugestão
-        data.map((gasto) => setSugestoes([...sugestoes, { id: gasto.product.id, ...buscarSugestao('test', gasto.product.cash, 'test') }]))
 
       setIsLoading(false);
     }
@@ -44,6 +62,16 @@ const Gastos = ({ navigation }) => {
                 left={props => <List.Icon {...props} style={estilo_gastos.icon} icon={item.product.name.toLowerCase()} />}
                 onPress={() => navigation.push('GastosDetalhe', { ...item })}
               />
+              <TouchableHighlight
+                activeOpacity={0.6}
+                underlayColor="#DDDDDD"
+                onPress={() => alert('Pressed!')}>
+                <View style={estilo_gastos.buttonSugestion}>
+                  <Text style={estilo_gastos.buttonText}>Sugestão disponível</Text>
+                  {console.log(sugestoes)}
+                </View>
+              </TouchableHighlight>
+
             </Surface>
           }
         />

@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const estilo_gastos = StyleSheet.create({
   surface: {
+    flex: 1,
+    flexDirection: 'column',
     marginTop: 10,
     marginHorizontal: 20,
     borderRadius: 10,
@@ -47,6 +49,19 @@ const estilo_gastos = StyleSheet.create({
     marginHorizontal: 20,
     display: "flex",
     flexDirection: "row"
+  },
+  buttonSugestion: {
+    height: 40,
+    width: '100%',
+    borderRadius: 4,
+    backgroundColor: '#6200EE',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    fontSize: 16
   }
 });
 
