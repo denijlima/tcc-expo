@@ -11,21 +11,8 @@ import estilo_gastos from "./estilo_gastos";
 const Gastos = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setdata] = useState([]);
-  const [sugestoes, setSugestoes] = useState([])
 
-  useEffect(() => {
-    data.map((gasto) => { 
-      const fetchData = async () => {
-        
-        let sugestao = await buscarSugestao(sugestionList[gasto.product.classification], gasto.cash, gasto.product.name, gasto.id)
-
-        sugestao["id"] = gasto.id
-        setSugestoes(...sugestoes, sugestao)
-      }
-      fetchData()
-    })
-
-  }, [data])
+  const hasOptimalPrice = (price) => Math.sign(price) == 1 ? true : false
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,13 +20,13 @@ const Gastos = ({ navigation }) => {
 
       const response = await listarGastos();
 
-      if (response.length > 0)
-        setdata(response)
-
-
-      // console.log(data)
-     
-        // para cada produto buscar uma sugestão e setar uma flag no produto ou criar um map de produto -> sugestão
+      if (response.length > 0) {
+        response.map(async gasto => {
+          let sugestao = await buscarSugestao(sugestionList[gasto.product.classification], gasto.cash, gasto.product.name, gasto.id);
+          return Object.assign(gasto, { sugestao: sugestao })
+        })
+        setdata(response);
+      }
 
       setIsLoading(false);
     }
@@ -65,13 +52,16 @@ const Gastos = ({ navigation }) => {
               <TouchableHighlight
                 activeOpacity={0.6}
                 underlayColor="#DDDDDD"
-                onPress={() => alert('Pressed!')}>
-                <View style={estilo_gastos.buttonSugestion}>
-                  <Text style={estilo_gastos.buttonText}>Sugestão disponível</Text>
-                  {console.log(sugestoes)}
+                onPress={() => console.log(item)}>
+                <View style={item.sugestao && hasOptimalPrice(item.sugestao.price_rate) ? estilo_gastos.buttonSugestion : estilo_gastos.buttonSugestionHasOptimal}>
+                  <Text style={estilo_gastos.buttonText}>
+                    {item.sugestao && hasOptimalPrice(item.sugestao.price_rate) ? 
+                      `Melhor oferta! ${item.sugestao.company}: ${item.sugestao.price_rate}% OFF`
+                      :
+                      'Já está economizando!'}
+                  </Text>
                 </View>
               </TouchableHighlight>
-
             </Surface>
           }
         />

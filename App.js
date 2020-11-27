@@ -20,7 +20,7 @@ const App = () => {
         <Stack.Navigator screenOptions={{
           headerShown: false
         }}
-          initialRouteName="Welcome">
+          initialRouteName="GastosStack">
           <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen name="Login_new" component={Login_new} />
           <Stack.Screen name="SignUp" component={SignUp} />

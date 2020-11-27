@@ -50,6 +50,14 @@ const estilo_gastos = StyleSheet.create({
     display: "flex",
     flexDirection: "row"
   },
+  buttonSugestionHasOptimal: {
+    height: 40,
+    width: '100%',
+    borderRadius: 4,
+    backgroundColor: '#00b800',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   buttonSugestion: {
     height: 40,
     width: '100%',
