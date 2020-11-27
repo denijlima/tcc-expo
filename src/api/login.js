@@ -13,7 +13,6 @@ const efetuarLogin =  async (usuario, senha) =>{
     }
     const resposta = await fetch(`https://${url}/auth`, cabecalhoHTTP);
     let status = await resposta.status
-    console.log(status)
     return await status
     }
 

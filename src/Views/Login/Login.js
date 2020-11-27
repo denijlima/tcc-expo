@@ -15,6 +15,16 @@ const Login = ({navigation}) => {
 const [usuario, setUsuario] = useState("");
 const [senha, setSenha] = useState("");
 
+const [opcao, setOpcao] = useState('cadastro');
+
+   const navegacao = () => {
+    if(opcao === 'empresa')
+      navigation.navigate('Empresa')
+
+    if (opcao === 'cadastro')
+      navigation.navigate('Cadastro')
+   }
+
    const tentarLogar = async () =>{
     let logado = await logando(usuario, senha);
 

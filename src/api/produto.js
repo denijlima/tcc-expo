@@ -60,6 +60,5 @@ export const cadastrarProduto =  async (description, id_classification, id_compa
 
     const resposta = await fetch(`https://${url}/api/Product/SaveProduct`, cabecalhoHTTP);
     let status = await resposta.status
-    console.log(status)
     return await status
     }

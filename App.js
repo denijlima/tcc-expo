@@ -24,6 +24,7 @@ const App = () => {
           <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen name="Login_new" component={Login_new} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Cadastro" component={Cadastro} />
           <Stack.Screen name="Empresa" component={Empresa} />
           <Stack.Screen name="GastosStack" component={GastosStack} />
