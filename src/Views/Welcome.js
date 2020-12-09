@@ -78,6 +78,8 @@ class Welcome extends Component {
   render() {
     const { navigation } = this.props;
 
+    console.disableYellowBox = true;
+
     return (
       <Block>
         <Block center bottom flex={0.4}>

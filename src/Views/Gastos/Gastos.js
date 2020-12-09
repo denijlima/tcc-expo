@@ -23,9 +23,10 @@ const Gastos = ({ navigation }) => {
       if (response.length > 0) {
         response.map(async gasto => {
           let sugestao = await buscarSugestao(sugestionList[gasto.product.classification], gasto.cash, gasto.product.name, gasto.id);
-          return Object.assign(gasto, { sugestao: sugestao })
+          console.log(await sugestao)
+          await Object.assign(gasto, { sugestao: await sugestao })
+          await setdata(response);
         })
-        setdata(response);
       }
 
       setIsLoading(false);
@@ -37,7 +38,7 @@ const Gastos = ({ navigation }) => {
   // TODO refatorar layout
   return (
     <Fragment>
-      {!isLoading ?
+      {!isLoading ? 
         <FlatList data={data}
           keyExtractor={item => item.id}
           renderItem={({ item, index }) =>
@@ -46,7 +47,7 @@ const Gastos = ({ navigation }) => {
                 descriptionNumberOfLines={10}
                 title={`${item.product.company}`}
                 description={`Recorrente: ${item.recurrent ? 'Sim' : 'Não'}\n\nCategoria: ${item.product.classification}\nCusto: R$ ${item.cash}\nDescrição:\n    ${item.product.description}`}
-                left={props => <List.Icon {...props} style={estilo_gastos.icon} icon={item.product.name.toLowerCase()} />}
+                left={props => <List.Icon {...props} style={estilo_gastos.icon} icon={item.product.name.toLowerCase() == 'netflix' ? item.product.name.toLowerCase() : 'wallet'} />}
                 onPress={() => navigation.push('GastosDetalhe', { ...item })}
               />
               <TouchableHighlight

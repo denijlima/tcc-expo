@@ -1,4 +1,4 @@
-import token from '../api/token'
+import AppState from '../state/AppState'
 
 const API_URL = 'iwallet-e.herokuapp.com';
 
@@ -13,7 +13,7 @@ export const salvarGasto = async (product, description, cash, recurrent) => {
         }),
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${AppState.getInstance().get('token')}`,
         }
     }
 
@@ -26,7 +26,7 @@ export const listarGastos = async () => {
         method: "GET",
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${AppState.getInstance().get('token')}`,
         }
     }
 

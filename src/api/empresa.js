@@ -1,5 +1,3 @@
-import token from './token'
-
 const cadastrarEmpresa =  async (nome, cnpj, email, senha, telefone, fimContrato, descricao) =>{
     let url = "iwallet-e.herokuapp.com";
     const cabecalhoHTTP = {
@@ -15,7 +13,7 @@ const cadastrarEmpresa =  async (nome, cnpj, email, senha, telefone, fimContrato
         }),
         headers:{ 
             "Content-type" : "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${''}`,
         }
 }
 

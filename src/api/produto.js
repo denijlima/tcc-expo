@@ -1,4 +1,4 @@
-import token from './token'
+import AppState from '../state/AppState'
 
 const API_URL = 'iwallet-e.herokuapp.com';
 
@@ -7,7 +7,7 @@ export const listarProdutos = async () => {
         method: "GET",
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${AppState.getInstance().get('token')}`,
         }
     }
 
@@ -20,7 +20,7 @@ export const listarClassificacao = async () => {
         method: "GET",
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${AppState.getInstance().get('token')}`,
         }
     }
 
@@ -33,7 +33,7 @@ export const listarEmpresa = async () => {
         method: "GET",
         headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${AppState.getInstance().get('token')}`,
         }
     }
 
@@ -54,7 +54,7 @@ export const cadastrarProduto =  async (description, id_classification, id_compa
         }),
         headers:{ 
             "Content-type" : "application/json",
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${AppState.getInstance().get('token')}`,
         }
 }
 
